@@ -26,7 +26,12 @@ def get_doc_info(filename):
 
 def build_metadata(filename, user_id, tags):
     doc_info = get_doc_info(filename)
-    return {'user_id': user_id, 'title': doc_info.title, 'tags': ','.join(tags)}
+    return {
+        'filename': os.path.basename(filename),
+        'user_id': user_id,
+        'title': doc_info.title,
+        'tags': ','.join(tags)
+    }
 
 
 def upload_pdf(filename, dest_path, user_id, tags=None):
